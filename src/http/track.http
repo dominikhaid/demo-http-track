@@ -1,0 +1,42 @@
+@host=http://localhost/
+@api=api/track
+
+
+//GET USER ID
+GET {{host}}{{api}}/project HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+###
+
+//POST PROJECT
+POST {{host}}{{api}}/project HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+name=www.dominikhaid.de
+&urls=https://www.dominikhaid.de,https://www.dominikhaid.de/login
+###
+
+//PATCH PROJECT
+PATCH {{host}}{{api}}/project HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+name=www.dominikhaid.de
+&urls=https://www.dominikhaid.de,https://www.dominikhaid.de/login
+&users=Dominik Haid,Flo die Muhmuh
+###
+
+//POST USER
+POST {{host}}{{api}}/user HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+name=Dominik Haid
+&email=info@dominikhaid.de
+###
+
+
+//POST LOG
+POST {{host}}{{api}}/log HTTP/1.1
+Content-Type: application/x-www-form-urlencoded
+
+name=www.dominikhaid.de
+###
+

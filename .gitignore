@@ -1,0 +1,14 @@
+**/gitignore
+# .env.development
+# .env.production
+**/access.log
+/.next
+**/build
+/node_modules
+**/samples
+**/certificates
+/docker-backups
+**/node_modules
+.editorconfig
+**/debug.log
+package-lock.jsonsendgrid.env

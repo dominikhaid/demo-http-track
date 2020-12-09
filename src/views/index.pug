@@ -1,0 +1,97 @@
+doctype basic
+html
+  head
+    title= title
+    link(rel="stylesheet" href="/css/style.css")
+    script(src="/js/pug/proj.js" type="text/javascript")
+  body
+    h1= title
+    div(id='projects')
+      label(for="addproject")= 'NEW PROJECT: '
+      input(id="addproject" placeholder="name")
+      button(class="projadd")= 'add'
+    each proj in projects
+      div(class='project')
+        h2= 'Project: '+ proj.name
+        div(class='projAtr')
+          label(for="addproject")= 'PROJECT: '
+          input(id="addproject" name=proj.name value=proj.name placeholder="name" )
+          button(class="proupdate")= 'update'
+          button(class="projremove")= 'delete'
+        div(id='users')
+          each user in proj.users
+            div(class='user' name=proj.name)
+              label(for=user.name)= 'USER: '
+              input(id=user.name  name=user.name  value=user.name)
+              input(id=user.email  name=user.email  value=user.email)
+              button(class="userupdate" name=user.email)= 'update'
+              button(class="userremove" name=user._id)= 'remove'
+          div(class='user' name=proj.name)
+            label(for="adduser" required)= 'NEW USER: '
+            input(id="addusername" name=proj.name placeholder="name")
+            input(id="adduseremail" name=proj.name placeholder="email")
+            button(class="adduser")= 'add'
+
+        div(id='urls')
+          each url in proj.urls
+            div(id='url' name=proj.name)
+              - var crawl = proj.lastCrawl ? proj.lastCrawl.filter(e=>e.url === url)[0] : false
+              - var logs = proj.logs ? proj.logs.filter(e=>e.url === url) : false
+                  label(for=url)= 'URL: '
+                  input(id=url url=url name=proj.name value=url)
+                  button(class="urlupdate")= 'update'
+                  button(class="urldelete")= 'delete'
+                  button(class="urlcrawl")= 'crawl'
+                  div(class='crawl')
+                    if crawl
+                      p= 'Status: '+ crawl.statusMessage +' '+ crawl.statusCode
+                      p= 'Server: '+ crawl.server + ' '+ crawl.httpVersion + ' '+ crawl.contentType
+                      p= 'Last crawl/change: '+ crawl.date
+                      p= 'Logs saved: '+ logs.length
+                      a(id=proj._id href='/log/'+proj._id+"?url="+crawl.url)= 'Last Log'
+                    else 
+                      p='Status: NOT CRAWLED YET'
+          div(id='url')
+            label(for="addurl")= 'URL: '
+            input(id="addurl" name=proj.name placeholder="url")
+            button(class="urladd")= 'add'
+    div(id='cron')
+      h2='Cron Timing'
+      - var sec = 0;
+      - var min = 0;
+      - var hour = 0;
+      - var days = 0;
+      - var mth = 0;
+      - var dow = 0;
+      button(class="savecron")= 'save'
+      div(class="selector")
+        label(for="sec")= 'Every Seconds: '
+        select(id="sec" value=Number.isNaN(Number(cron[0])) ? 0:Number(cron[0]) )
+          while sec <=60
+            option(value=sec selected=Number(cron[0]) === sec ? "selected" : false)=sec++
+      div(class="aselector")
+        label(for="min")= 'Every Minutes: '
+        select(id="min" value=Number.isNaN(Number(cron[1])) ? 0:Number(cron[1]) )
+          while min <=60
+            option(value=min selected=Number(cron[1]) === min ? "selected" : false)=min++
+      div(class="selector")
+        label(for="hour")= 'Every Hours: '
+        select(id="hour" value=Number.isNaN(Number(cron[2])) ? 0:Number(cron[2]) )
+          while hour <=24
+            option(value=hour selected=Number(cron[3]) === hour ? "selected" : false)=hour++
+      div(class="selector")
+        label(for="days")= 'Every Day of Month (1-31): '
+        select(id="days" value=Number.isNaN(Number(cron[3])) ? 0:Number(cron[3]) )
+          while days <=31
+            option(value=days selected=Number(cron[3]) === days ? "selected" : false)=days++
+      div(class="selector")
+        label(for="mth")= 'Every Month (0-11): '
+        select(id="mth" value=Number.isNaN(Number(cron[4])) ? 0:Number(cron[4]) )
+          while mth <=11
+            option(value=mth selected=Number(cron[4]) === mth ? "selected" : false)=mth++
+      div(class="selector")
+        label(for="dow")= 'Every Day of Week (0-6): '
+        select(id="dow" value=Number.isNaN(Number(cron[5])) ? 0:Number(cron[5]) )
+          while dow <=6
+            option(value=dow selected=Number(cron[5]) === dow ? "selected" : false)=dow++
+

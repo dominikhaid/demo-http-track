@@ -1,0 +1,1 @@
+module.exports.timing = ["*","1","*","*","*","*"]

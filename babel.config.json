@@ -1,0 +1,11 @@
+{
+  "presets": [
+    [
+      "node", {
+        "preset-env": {},
+        "transform-runtime": {}
+      }
+    ]
+  ],
+  "plugins": []
+}

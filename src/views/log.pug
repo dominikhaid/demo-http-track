@@ -1,0 +1,23 @@
+doctype basic
+html
+  head
+    title= title
+    link(rel="stylesheet" href="/css/style.css")
+    script(src="/js/pug/proj.js" type="text/javascript")
+  body
+    h1= title
+    div(id='project')
+        p= 'NAME: '+ project.name
+        p= 'OLD/NEW'
+        p='STATUS: '+ project.lastlog.statusMessage +' '+ project.lastlog.statusCode+' / '+ project.newlog.statusMessage +' '+ project.newlog.statusCode
+        p='SERVER: '+ project.lastlog.server + ' '+ project.lastlog.httpVersion + ' '+ project.lastlog.contentType +' / '+ project.newlog.server + ' '+ project.newlog.httpVersion + ' '+ project.newlog.contentType
+        p='URL: '+ project.lastlog.url+' / '+ project.newlog.url
+        p='DATE: '+ project.lastlog.date+' / '+ project.newlog.date
+        p= 'DIFF TO PREVIOUS: '
+          if project.diff.length > 0
+          each diff in project.diff
+            p= 'WORD: '+diff.word
+            p= 'NEW: '+diff.new
+            p= 'OLD: '+diff.old
+        p(class="body")= 'OLD CONTENT: '+ project.lastlog.body
+        p(class="body")= 'NEW CONTENT: '+ project.lastlog.body

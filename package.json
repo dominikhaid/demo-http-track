@@ -1,0 +1,69 @@
+{
+  "name": "dominikhaid-next",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@sendgrid/mail": "^7.4.0",
+    "cors": "^2.8.5",
+    "cron": "^1.8.2",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.23.1",
+    "jsonwebtoken": "^8.5.1",
+    "moment": "^2.27.0",
+    "mongodb": "^3.6.3",
+    "mongoose": "^5.11.4",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2",
+    "pug": "^3.0.0",
+    "request": "^2.88.2",
+    "xss": "^1.0.8"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.0",
+    "@babel/node": "^7.10.5",
+    "@babel/polyfill": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/runtime": "7.12.5",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-import": "^1.13.0",
+    "eslint": "^7.6.0",
+    "eslint-config-airbnb": "^18.2.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-recommended": "^4.1.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-watch": "^7.0.0",
+    "prettier": "^2.2.1",
+    "prettier-eslint-cli": "^5.0.0"
+  },
+  "scripts": {
+    "start": "NODE_ENV=production node ./server.js",
+    "dev": "NODE_ENV=development node ./server.js",
+    "plugin": "NODE_ENV=production node ./src/bin/plugin.js",
+    "build": "NODE_ENV=production webpack  --config ./src/webpack/config/webpack.production.js",
+    "format": "prettier --config .prettierrc.json \"{,!(node_modules)/**/}src/**/*.{js,jsx}\" --write",
+    "docker-mongo-up": "cd ./docker/mongodb && docker-compose up  -d && cd ../../",
+    "docker-mongo-down": "cd ./docker/mongodb && docker-compose down && cd ../../"
+  },
+  "browserslist": {
+    "production": [
+      ">0.3%",
+      "not ie 11",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "eslintConfig": {
+    "globals": {
+      "window": true,
+      "browser": true
+    }
+  }
+}

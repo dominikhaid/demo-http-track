@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>http://localhost/blog/sample</loc>
+<lastmod>2020-04-23T22:41:30</lastmod>
+</url>
+<script xmlns=""/></urlset>
+
+//localhost/api/sitemap.xml generates sitemap.xml dynamiclly 
