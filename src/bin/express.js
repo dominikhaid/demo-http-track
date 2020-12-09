@@ -2,11 +2,13 @@ const auth = require('../mongoose/db/db');
 
 const getWebsites = require('../mongoose/querys/trackQuerys').getWebsites;
 const getWebsiteById = require('../mongoose/querys/trackQuerys').getWebsiteById;
-const cron= require('../includes/httpTrack/cron')
+const cronStart= require('../includes/httpTrack/cron').cronStart
+const cronStop= require('../includes/httpTrack/cron').cronStop
 
 function startServer(server, serverOptions, protocol) {
   server.set('views', './src/views');
   server.set('view engine', 'pug');
+  cronStart()
 
   server.get('/', function (req, res) {
     auth().then(con => {

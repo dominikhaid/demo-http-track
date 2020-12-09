@@ -65,33 +65,32 @@ html
       - var dow = 0;
       button(class="savecron")= 'save'
       div(class="selector")
-        label(for="sec")= 'Every Seconds: '
+        label(for="sec")= 'On Second: '
         select(id="sec" value=Number.isNaN(Number(cron[0])) ? 0:Number(cron[0]) )
           while sec <=60
             option(value=sec selected=Number(cron[0]) === sec ? "selected" : false)=sec++
-      div(class="aselector")
-        label(for="min")= 'Every Minutes: '
+      div(class="selector")
+        label(for="min")= 'On Minute: '
         select(id="min" value=Number.isNaN(Number(cron[1])) ? 0:Number(cron[1]) )
           while min <=60
             option(value=min selected=Number(cron[1]) === min ? "selected" : false)=min++
       div(class="selector")
-        label(for="hour")= 'Every Hours: '
+        label(for="hour")= 'On Hour: '
         select(id="hour" value=Number.isNaN(Number(cron[2])) ? 0:Number(cron[2]) )
           while hour <=24
             option(value=hour selected=Number(cron[3]) === hour ? "selected" : false)=hour++
       div(class="selector")
-        label(for="days")= 'Every Day of Month (1-31): '
+        label(for="days")= 'On Day of Month (1-31): '
         select(id="days" value=Number.isNaN(Number(cron[3])) ? 0:Number(cron[3]) )
           while days <=31
             option(value=days selected=Number(cron[3]) === days ? "selected" : false)=days++
       div(class="selector")
-        label(for="mth")= 'Every Month (0-11): '
+        label(for="mth")= 'On Month (0-11): '
         select(id="mth" value=Number.isNaN(Number(cron[4])) ? 0:Number(cron[4]) )
           while mth <=11
             option(value=mth selected=Number(cron[4]) === mth ? "selected" : false)=mth++
       div(class="selector")
-        label(for="dow")= 'Every Day of Week (0-6): '
+        label(for="dow")= 'On Day of Week (0-6): '
         select(id="dow" value=Number.isNaN(Number(cron[5])) ? 0:Number(cron[5]) )
           while dow <=6
             option(value=dow selected=Number(cron[5]) === dow ? "selected" : false)=dow++
-

@@ -1,1 +1,1 @@
-module.exports.timing = ["*","1","*","*","*","*"]
+module.exports.timing = ["1","*","*","*","*","*"]

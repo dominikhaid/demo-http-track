@@ -1,5 +1,4 @@
 const auth = require('../../mongoose/db/db');
-const createLog = require('../../mongoose/querys/trackQuerys').createLog;
 const getWebsites = require('../../mongoose/querys/trackQuerys').getWebsites;
 const crawl = require('./crawl').crawl;
 const moment = require('moment');
@@ -20,6 +19,7 @@ Timeing
 var job = new CronJob(
   timing.join(' '),
   function () {
+
     //load projects / websites
     function getProjects() {
       auth().then(con => {
@@ -212,3 +212,6 @@ job.addCallback(function () {
 });
 
 job.start();
+
+module.exports.cronStart = () =>job.start();
+module.exports.cronStop = () => job.stop();
