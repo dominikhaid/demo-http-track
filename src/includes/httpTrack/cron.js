@@ -165,10 +165,7 @@ var job = new CronJob(
           auth()
             .then(con => {
               let req = {body: {name: 'www.dominikhaid.de'}};
-              console.log('Changed detecetd:', url, 'logging && sending email');
-              createLog(con, req, compare.log).then(log => {
-                console.log('CREATE NEW LOG', url);
-                //push to db and sendEmail
+              console.log('Changed detecetd:', url, 'sending email');
                 let body, status;
 
                 if (compare.body.length > 1)
@@ -183,7 +180,6 @@ var job = new CronJob(
                 body += status;
                 sendEmail(`Website changed ${url}`, body, project.users.map(e=> e.email).join(','));
                 return log;
-              });
             })
             .catch(err => {
               console.log(err);
