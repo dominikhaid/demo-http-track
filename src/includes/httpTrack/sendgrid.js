@@ -4,7 +4,7 @@ const sgMail = require('@sendgrid/mail')
 
 
 module.exports.sendEmail = (sub,body,users)=> {   
-   console.log('Email->','USERS:',users,'SUBJECT:vhj,lok<ö.ä-ioöü#',sub)
+   console.log('Email->','USERS:',users,'SUBJECT:',sub)
     sgMail.setApiKey(process.env.SENDGRID_API_KEY)
     const msg = {
         to:users,
