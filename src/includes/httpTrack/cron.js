@@ -188,7 +188,7 @@ var job = new CronJob(
         }
 
         if (!compare || (compare.status.length < 1 && compare.body.length < 1))
-          console.log('Nothing Changed');
+          console.log('Nothing Changed: ',url);
       }
     }
 
